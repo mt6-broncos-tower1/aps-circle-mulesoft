@@ -2,8 +2,21 @@ version: 2.1
 
 orbs:
   maven: circleci/maven@1.1
-
-workflows:
-  maven_test:
-    jobs:
-      - maven/test
+jobs:
+  build: 
+    docker:       
+      - image: buildpack-deps:trusty        
+    steps:
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo "export TOKEN=123" >> $BASH_ENV
+  test: 
+    docker:       
+      - image: buildpack-deps:trusty        
+    steps:
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo $TOKEN
+  
