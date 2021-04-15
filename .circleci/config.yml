@@ -11,7 +11,7 @@ jobs:
           name: Setup Environment Variables
           command: |
             echo "export TOKEN=123" >> $BASH_ENV
-            apt-get install jq
+            apt-get update && apt-get install -yqq jq
             echo '{"foo": 0}' | jq .
   test: 
     docker:       
