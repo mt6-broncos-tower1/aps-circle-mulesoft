@@ -19,4 +19,8 @@ jobs:
           name: Setup Environment Variables
           command: |
             echo $TOKEN
-  
+workflows:
+  buildandtest:
+    jobs:
+      - build
+      - test
